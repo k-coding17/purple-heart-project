@@ -94,25 +94,30 @@ function DropdownItem({ item }: { item: NavItem }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button className="flex items-center gap-1 text-brand-mid hover:text-brand text-sm font-medium transition-colors">
+      <Link
+        href={item.href}
+        className="flex items-center gap-1 text-brand-mid hover:text-brand text-sm font-medium transition-colors"
+      >
         {item.label}
         <ChevronDown
           size={13}
           className={`transition-transform ${open ? "rotate-180" : ""}`}
         />
-      </button>
+      </Link>
       {open && (
-        <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-neutral-200 rounded-md py-1.5 z-50 shadow-sm">
-          {item.children.map((child) => (
-            <Link
-              key={child.href}
-              href={child.href}
-              className="block px-4 py-2 text-sm text-brand-mid hover:text-brand hover:bg-brand-light transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {child.label}
-            </Link>
-          ))}
+        <div className="absolute top-full left-0 pt-1 w-56 z-50">
+          <div className="bg-white border border-neutral-200 rounded-md py-1.5 shadow-sm">
+            {item.children.map((child) => (
+              <Link
+                key={child.href}
+                href={child.href}
+                className="block px-4 py-2 text-sm text-brand-mid hover:text-brand hover:bg-brand-light transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                {child.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>
