@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Heart, RefreshCw, Users, Megaphone } from "lucide-react";
+import { Heart, RefreshCw, Megaphone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Ways to Donate",
@@ -26,16 +26,6 @@ const givingOptions = [
       "Become a sustaining supporter. Monthly gifts provide reliable, ongoing funding that lets us plan programs and serve more veterans.",
     cta: "Give Monthly",
     href: "#monthly",
-    highlight: false,
-  },
-  {
-    icon: Users,
-    id: "peer",
-    title: "Peer to Peer",
-    description:
-      "Create a personal fundraising page and rally your community to support veterans in your name.",
-    cta: "Start a Fundraiser",
-    href: "/fundraising#peer",
     highlight: false,
   },
   {

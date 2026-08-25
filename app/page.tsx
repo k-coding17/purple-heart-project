@@ -54,7 +54,7 @@ const impactCards = [
   {
     title: "Get Involved",
     description:
-      "Join the Bench Brigade, explore peer-to-peer fundraising, or spread the word.",
+      "Join the Bench Brigade or spread the word to support veterans.",
     href: "/bench-brigade",
     cta: "Learn more",
   },
@@ -62,7 +62,7 @@ const impactCards = [
 
 const journeyLinks = [
   { href: "/about#what-is-php", label: "Start Your Journey" },
-  { href: "/programs", label: "Our Programs" },
+  { href: "/programs", label: "Scholarship" },
   { href: "/gallery#wall-of-heroes", label: "See the Difference" },
 ];
 

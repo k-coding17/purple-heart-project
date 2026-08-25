@@ -36,10 +36,9 @@ export default function Logo({
         <span
           className={`text-brand font-bold text-lg tracking-tight leading-tight${alwaysShowText ? "" : " hidden sm:block"}`}
         >
-          Purple<span className="text-gold">Heart</span>
-          <span className="block text-xs font-normal text-brand-mid tracking-widest uppercase -mt-0.5">
-            Project
-          </span>
+          <span className="block">Purple</span>
+          <span className="block">Heart</span>
+          <span className="block">Project</span>
         </span>
       )}
     </Link>

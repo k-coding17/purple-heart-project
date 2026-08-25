@@ -11,17 +11,20 @@ const footerLinks = {
     { href: "/news", label: "News & Media" },
     { href: "/contact", label: "Contact Us" },
   ],
-  Programs: [
+  Scholarship: [
     { href: "/programs#scholarship", label: "Scholarship Application" },
     { href: "/programs#blue-chip", label: "Blue Chip Recommendation" },
-    { href: "/bench-brigade", label: "Bench Brigade" },
+    { href: "/bench-brigade", label: "Volunteer" },
     { href: "/gallery#wall-of-heroes", label: "Wall of Heroes" },
     { href: "/events", label: "Upcoming Events" },
   ],
+  Governance: [
+    { href: "/governance#board", label: "Board of Directors" },
+    { href: "/governance#volunteers", label: "Key Volunteers" },
+    { href: "/governance#documents", label: "Governing Documents" },
+  ],
   "Get Involved": [
     { href: "/donate", label: "Ways to Donate" },
-    { href: "/fundraising#peer", label: "Peer to Peer Fundraising" },
-    { href: "/governance", label: "Governance" },
     { href: "/gallery", label: "Gallery" },
   ],
 };
@@ -30,7 +33,7 @@ export default function Footer() {
   return (
     <footer className="bg-brand-light border-t border-neutral-200 text-brand-mid">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="space-y-4">
             <Logo alwaysShowText imageClassName="h-9 w-auto" />
             <p className="text-sm leading-relaxed">

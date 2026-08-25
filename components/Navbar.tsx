@@ -29,17 +29,8 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    href: "/governance",
-    label: "Governance",
-    children: [
-      { href: "/governance#board", label: "Board of Directors" },
-      { href: "/governance#volunteers", label: "Key Volunteers" },
-      { href: "/governance#documents", label: "Governing Documents" },
-    ],
-  },
-  {
     href: "/programs",
-    label: "Programs",
+    label: "Scholarship",
     children: [
       { href: "/programs#scholarship", label: "Scholarship Application" },
       {
@@ -50,27 +41,12 @@ const navItems: NavItem[] = [
   },
   {
     href: "/bench-brigade",
-    label: "Bench Brigade",
+    label: "Volunteer",
     children: [
       { href: "/bench-brigade#about", label: "About the Bench Brigade" },
       { href: "/bench-brigade#resources", label: "Bench Builders Resources" },
       { href: "/bench-brigade#deliveries", label: "Bench Delivery Pictures" },
     ],
-  },
-  {
-    href: "/gallery",
-    label: "Gallery",
-    children: [
-      { href: "/gallery#wall-of-heroes", label: "Wall of Heroes" },
-      { href: "/gallery#2025", label: "2025 Bench Delivery Pictures" },
-      { href: "/gallery#2024", label: "2024 Bench Delivery Pictures" },
-      { href: "/gallery#2023", label: "2023 Bench Delivery Pictures" },
-    ],
-  },
-  {
-    href: "/fundraising",
-    label: "Fundraising",
-    children: [{ href: "/fundraising#peer", label: "Peer to Peer" }],
   },
 ];
 
@@ -131,8 +107,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-neutral-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Logo priority imageClassName="h-10 w-auto" />
+        <div className="flex h-[80px] items-center justify-between">
+          <Logo priority imageClassName="h-[70px] w-auto" />
 
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
