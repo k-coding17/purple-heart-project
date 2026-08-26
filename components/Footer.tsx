@@ -33,70 +33,80 @@ export default function Footer() {
   return (
     <footer className="bg-brand-light border-t border-neutral-200 text-brand-mid">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <div className="space-y-4">
-            <Logo alwaysShowText imageClassName="h-9 w-auto" />
-            <p className="text-sm leading-relaxed">
-              Introducing combat-wounded veterans to the peace and joy found
-              through the therapy of traditional hand tool woodworking — since
-              2016.
-            </p>
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <Phone size={14} className="text-gold shrink-0" />
-                <span>(253) 381-4113</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail size={14} className="text-gold shrink-0" />
-                <span>info@ThePurpleHeartProject.org</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <MapPin size={14} className="text-gold shrink-0 mt-0.5" />
-                <span>
-                  P.O. Box 61
-                  <br />
-                  Hilo, HI 96721
-                </span>
+        <div className="flex flex-col lg:flex-row lg:items-end gap-10">
+          <div className="grid flex-1 min-w-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+            <div className="space-y-4">
+              <Logo alwaysShowText imageClassName="h-9 w-auto" />
+              <p className="text-sm leading-relaxed">
+                Introducing combat-wounded veterans to the peace and joy found
+                through the therapy of traditional hand tool woodworking — since
+                2016.
+              </p>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <Phone size={14} className="text-gold shrink-0" />
+                  <span>(253) 381-4113</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail size={14} className="text-gold shrink-0" />
+                  <span>info@ThePurpleHeartProject.org</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <MapPin size={14} className="text-gold shrink-0 mt-0.5" />
+                  <span>
+                    P.O. Box 61
+                    <br />
+                    Hilo, HI 96721
+                  </span>
+                </div>
               </div>
             </div>
+
+            {Object.entries(footerLinks).map(([heading, links]) => (
+              <div key={heading}>
+                <h3 className="text-brand font-semibold text-sm uppercase tracking-wider mb-4">
+                  {heading}
+                </h3>
+                <ul className="space-y-2">
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm hover:text-brand hover:underline transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
-          {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading}>
-              <h3 className="text-brand font-semibold text-sm uppercase tracking-wider mb-4">
-                {heading}
-              </h3>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm hover:text-brand hover:underline transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              {heading === "Get Involved" && (
-                <a
-                  href="https://www.candid.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-6 transition-opacity hover:opacity-80"
-                  aria-label="View Purple Heart Project on Candid (opens in new tab)"
-                >
-                  <Image
-                    src="/candid-platinum-2026.png"
-                    alt="Candid Platinum Transparency 2026"
-                    width={225}
-                    height={225}
-                    className="h-24 w-auto"
-                  />
-                </a>
-              )}
-            </div>
-          ))}
+          <div className="flex shrink-0 items-end gap-4">
+            <a
+              href="https://www.candid.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 transition-opacity hover:opacity-80"
+              aria-label="View Purple Heart Project on Candid (opens in new tab)"
+            >
+              <Image
+                src="/candid-platinum-2026.png"
+                alt="Candid Platinum Transparency 2026"
+                width={225}
+                height={225}
+                className="h-24 w-auto max-w-none"
+              />
+            </a>
+            <Image
+              src="/four-star-rating-2026.png"
+              alt="Four-Star Rating Badge 2026"
+              width={1801}
+              height={1801}
+              className="h-24 w-auto max-w-none shrink-0"
+            />
+          </div>
         </div>
 
         <div className="mt-10 border-t border-neutral-300 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-mid">

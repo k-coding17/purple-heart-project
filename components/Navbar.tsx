@@ -48,6 +48,16 @@ const navItems: NavItem[] = [
       { href: "/bench-brigade#deliveries", label: "Bench Delivery Pictures" },
     ],
   },
+  {
+    href: "/gallery",
+    label: "Gallery",
+    children: [
+      { href: "/gallery#wall-of-heroes", label: "Wall of Heroes" },
+      { href: "/gallery#2025", label: "2025 Bench Delivery Pictures" },
+      { href: "/gallery#2024", label: "2024 Bench Delivery Pictures" },
+      { href: "/gallery#2023", label: "2023 Bench Delivery Pictures" },
+    ],
+  },
 ];
 
 function DropdownItem({ item }: { item: NavItem }) {
