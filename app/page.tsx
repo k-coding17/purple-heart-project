@@ -113,10 +113,10 @@ function FeaturedQuote({
 export default function Home() {
   return (
     <>
-      {/* Hero — WWP-style split: navy left, photo right */}
+      {/* Hero — photo with overlaid text */}
       <section className="relative min-h-[28rem] md:min-h-[34rem] overflow-hidden bg-brand-dark">
         <Image
-          src="/hero-workbench.png"
+          src="/hero-workbench1.png"
           alt="Hand tools, wood shavings, and military memorabilia on a workbench"
           fill
           priority
@@ -124,16 +124,12 @@ export default function Home() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-brand-dark from-0% via-brand-dark/75 via-[28%] to-transparent to-[55%]"
-          aria-hidden="true"
-        />
         <div className="relative mx-auto flex min-h-[28rem] md:min-h-[34rem] max-w-7xl items-center px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="max-w-lg md:max-w-md lg:max-w-lg">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight drop-shadow-sm">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)]">
               Finding Peace &amp; Joy Through Hand Tool Woodworking
             </h1>
-            <p className="mt-5 text-base md:text-lg text-white/95 leading-relaxed max-w-md drop-shadow-sm">
+            <p className="mt-5 text-base md:text-lg text-white leading-relaxed max-w-md drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)]">
               The Purple Heart Project introduces combat-wounded veterans to the
               peace and joy found through the therapy of traditional hand tool
               woodworking — and connects them to a community that never forgets.
