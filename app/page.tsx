@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Heart, Hammer, Users, Quote } from "lucide-react";
 import Sponsors from "@/components/Sponsors";
 
@@ -112,35 +113,37 @@ function FeaturedQuote({
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-brand-dark">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <div className="max-w-3xl">
-            <p className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-4">
-              Serving Those Who Served
-            </p>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
+      {/* Hero — WWP-style split: navy left, photo right */}
+      <section className="relative min-h-[28rem] md:min-h-[34rem] overflow-hidden bg-brand-dark">
+        <Image
+          src="/hero-workbench.png"
+          alt="Hand tools, wood shavings, and military memorabilia on a workbench"
+          fill
+          priority
+          quality={90}
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-brand-dark from-0% via-brand-dark/75 via-[28%] to-transparent to-[55%]"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto flex min-h-[28rem] md:min-h-[34rem] max-w-7xl items-center px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="max-w-lg md:max-w-md lg:max-w-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight drop-shadow-sm">
               Finding Peace &amp; Joy Through Hand Tool Woodworking
             </h1>
-            <p className="mt-6 text-lg text-white/75 leading-relaxed max-w-2xl">
+            <p className="mt-5 text-base md:text-lg text-white/95 leading-relaxed max-w-md drop-shadow-sm">
               The Purple Heart Project introduces combat-wounded veterans to the
               peace and joy found through the therapy of traditional hand tool
               woodworking — and connects them to a community that never forgets.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-start gap-3">
-              <Link
-                href="/programs#scholarship"
-                className="rounded-md bg-gold px-6 py-3 text-white font-semibold hover:bg-gold-dark transition-colors text-sm"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/donate"
-                className="rounded-md border border-white/40 px-6 py-3 text-white font-semibold hover:bg-white/10 transition-colors text-sm"
-              >
-                Donate
-              </Link>
-            </div>
+            <Link
+              href="/programs#scholarship"
+              className="mt-8 inline-flex items-center rounded-full bg-white px-8 py-3 text-sm font-bold uppercase tracking-wide text-black hover:bg-white/90 transition-colors"
+            >
+              Apply Now
+            </Link>
           </div>
         </div>
       </section>

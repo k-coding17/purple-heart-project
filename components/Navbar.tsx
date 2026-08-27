@@ -67,9 +67,10 @@ function DropdownItem({ item }: { item: NavItem }) {
     return (
       <Link
         href={item.href}
-        className="text-brand-mid hover:text-brand text-sm font-medium transition-colors"
+        className="group relative text-black text-lg font-semibold transition-colors hover:text-gold"
       >
         {item.label}
+        <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gold transition-all duration-200 group-hover:w-full" />
       </Link>
     );
   }
@@ -82,13 +83,14 @@ function DropdownItem({ item }: { item: NavItem }) {
     >
       <Link
         href={item.href}
-        className="flex items-center gap-1 text-brand-mid hover:text-brand text-sm font-medium transition-colors"
+        className="group relative flex items-center gap-1 text-black text-lg font-semibold transition-colors hover:text-gold"
       >
         {item.label}
         <ChevronDown
-          size={13}
+          size={15}
           className={`transition-transform ${open ? "rotate-180" : ""}`}
         />
+        <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gold transition-all duration-200 group-hover:w-full" />
       </Link>
       {open && (
         <div className="absolute top-full left-0 pt-1 w-56 z-50">
@@ -97,7 +99,7 @@ function DropdownItem({ item }: { item: NavItem }) {
               <Link
                 key={child.href}
                 href={child.href}
-                className="block px-4 py-2 text-sm text-brand-mid hover:text-brand hover:bg-brand-light transition-colors"
+                className="block px-4 py-2 text-sm font-medium text-black hover:text-gold hover:bg-brand-light transition-colors"
                 onClick={() => setOpen(false)}
               >
                 {child.label}
@@ -153,7 +155,7 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block text-brand hover:text-gold font-medium py-2 flex-1"
+                  className="block text-black hover:text-gold text-lg font-semibold py-2 flex-1 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -164,10 +166,10 @@ export default function Navbar() {
                         mobileExpanded === item.label ? null : item.label,
                       )
                     }
-                    className="text-brand-mid px-2 py-2"
+                    className="text-black px-2 py-2"
                   >
                     <ChevronDown
-                      size={14}
+                      size={15}
                       className={`transition-transform ${
                         mobileExpanded === item.label ? "rotate-180" : ""
                       }`}
@@ -182,7 +184,7 @@ export default function Navbar() {
                       key={child.href}
                       href={child.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block text-brand-mid hover:text-brand text-sm py-1.5"
+                      className="block text-black hover:text-gold text-sm font-medium py-1.5 transition-colors"
                     >
                       {child.label}
                     </Link>
