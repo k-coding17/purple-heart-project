@@ -127,7 +127,7 @@ export default function AboutPage() {
           <p className="mt-6 text-sm text-gray-500">
             Additional financial details are available on our{" "}
             <a
-              href="https://www.candid.org"
+              href="https://app.candid.org/profile/14533139/purple-heart-project-88-2217122"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand hover:underline"

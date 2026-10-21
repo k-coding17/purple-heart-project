@@ -1,7 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Heart, Hammer, Users, Quote } from "lucide-react";
+import {
+  ArrowRight,
+  Heart,
+  Hammer,
+  Users,
+  Quote,
+  BadgeCheck,
+  Flag,
+  Landmark,
+  User,
+} from "lucide-react";
 import Sponsors from "@/components/Sponsors";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const testimonials = [
   {
@@ -16,55 +27,61 @@ const testimonials = [
   },
 ];
 
+const credentials = [
+  {
+    icon: BadgeCheck,
+    label: "US 501(c)3 Non-Profit Organization",
+  },
+  {
+    icon: Flag,
+    label: "Canadian Registered Charity",
+  },
+  {
+    icon: Landmark,
+    label: "US Federal Tax ID 88-2217122",
+  },
+];
+
 const highlights = [
   {
     icon: Hammer,
     title: "Hand Tool Woodworking",
     description:
-      "Traditional hand tool woodworking — quiet, focused, and meditative. For combat-wounded veterans, that stillness can be transformative.",
+      "Traditional hand-tool woodworking offers combat-wounded veterans a rewarding blend of therapeutic, emotional, and practical benefits. Shaping wood with only hand tools—without the dust, danger, and noise of power tools—focuses the mind and develops skills. It can be transformative by helping veterans address combat trauma, rebuild confidence, and experience a renewed sense of purpose and connection.",
   },
   {
     icon: Heart,
     title: "Healing Through Craft",
     description:
-      "Working with your hands diverts anxiety, builds focus, and produces real, tangible results veterans can be proud of.",
+      "The quiet, focused practice of crafting wood by hand provides a calming, meditative outlet for veterans coping with the lasting effects of combat. The deliberate pace of hand-tool work offers a peaceful respite and channels anxious energy into purposeful, creative action. Many veterans report reduced nightmares, greater relaxation, and a sense of peace after engaging in this craft.",
   },
   {
     icon: Users,
-    title: "Community & Connection",
+    title: "Community and Connection",
     description:
-      "Veterans are connected through the PHP community so they know they are supported and never alone or forgotten.",
+      "PHP provides selected combat-wounded veterans with free woodworking training retreats and tools. Training alongside other combat-wounded peers who “get it” — strengthens resilience and fosters long-term support networks. Continued connection after training reminds veterans that they remain part of a community and are never alone or forgotten.",
   },
 ];
 
-const impactCards = [
-  {
-    title: "Donate",
-    description:
-      "We can't empower veterans without you. Support those who served with a one-time or recurring gift.",
-    href: "/donate",
-    cta: "Give now",
-  },
-  {
-    title: "Apply",
-    description:
-      "Apply for a scholarship to attend a hand tool woodworking workshop and begin your journey.",
-    href: "/programs#scholarship",
-    cta: "Apply now",
-  },
-  {
-    title: "Get Involved",
-    description:
-      "Join the Bench Brigade or spread the word to support veterans.",
-    href: "/bench-brigade",
-    cta: "Learn more",
-  },
+const veteranStories: {
+  id: string;
+  name: string;
+  beforeSrc?: string;
+  afterSrc?: string;
+}[] = [
+  { id: "story-1", name: "Veteran name" },
+  { id: "story-2", name: "Veteran name" },
+  { id: "story-3", name: "Veteran name" },
 ];
+
+/** Repeated so one loop is wider than the screen and the drift has no gap. */
+const storyLoop = [...veteranStories, ...veteranStories];
+const marqueeStories = [...storyLoop, ...storyLoop];
 
 const journeyLinks = [
-  { href: "/about#what-is-php", label: "Start Your Journey" },
-  { href: "/programs", label: "Scholarship" },
-  { href: "/gallery#wall-of-heroes", label: "See the Difference" },
+  { href: "/about", label: "Learn More about PHP" },
+  { href: "/programs", label: "Explore our Program" },
+  { href: "/programs#scholarship", label: "Apply for a PHP scholarship" },
 ];
 
 const newsItems = [
@@ -85,16 +102,57 @@ const newsItems = [
   },
 ];
 
+function StoryPhoto({
+  label,
+  src,
+}: {
+  label: "Before" | "After";
+  src?: string;
+}) {
+  return (
+    <figure>
+      <div className="relative aspect-[3/4] overflow-hidden rounded-md border border-dashed border-neutral-300 bg-brand-light">
+        {src ? (
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 200px, 40vw"
+          />
+        ) : (
+          <div className="flex h-full flex-col items-center justify-center gap-2 px-2 text-center">
+            <User className="h-8 w-8 text-brand-mid" strokeWidth={1.5} />
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-mid">
+              {label} photo
+            </span>
+          </div>
+        )}
+      </div>
+      <figcaption className="mt-2 text-center text-xs font-semibold uppercase tracking-wide text-brand">
+        {label}
+      </figcaption>
+    </figure>
+  );
+}
+
 function FeaturedQuote({
   quote,
   attribution,
+  title,
 }: {
   quote: string;
   attribution: string;
+  title?: string;
 }) {
   return (
     <section className="bg-white py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-y border-neutral-200">
       <div className="mx-auto max-w-3xl text-center">
+        {title && (
+          <h2 className="text-2xl md:text-3xl font-bold text-brand mb-8">
+            {title}
+          </h2>
+        )}
         <Quote
           className="text-gold w-8 h-8 mx-auto mb-6 opacity-40"
           strokeWidth={1.5}
@@ -127,12 +185,11 @@ export default function Home() {
         <div className="relative mx-auto flex min-h-[28rem] md:min-h-[34rem] max-w-7xl items-center px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="max-w-lg md:max-w-md lg:max-w-lg">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)]">
-              Finding Peace &amp; Joy Through Hand Tool Woodworking
+              Serving Combat-Wounded Veterans
             </h1>
             <p className="mt-5 text-base md:text-lg text-white leading-relaxed max-w-md drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)]">
-              The Purple Heart Project introduces combat-wounded veterans to the
-              peace and joy found through the therapy of traditional hand tool
-              woodworking — and connects them to a community that never forgets.
+              Empowering combat-wounded veterans through woodworking and
+              community
             </p>
             <Link
               href="/programs#scholarship"
@@ -144,19 +201,38 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-white border-b border-neutral-200 py-8 px-4 sm:px-6 lg:px-8">
+        <ul className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {credentials.map((item) => {
+            const Icon = item.icon;
+            return (
+              <li key={item.label} className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-gold-light">
+                  <Icon className="text-gold h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <span className="text-sm font-semibold text-brand leading-snug">
+                  {item.label}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
       {/* Mission — WWP-style empowering block */}
       <section className="bg-white py-16 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-2xl md:text-4xl font-bold text-brand leading-tight">
-            Empowering Veterans Through Woodworking, Community, and Support
+            What PHP Does
           </h2>
           <p className="mt-6 text-brand-mid leading-relaxed max-w-3xl mx-auto">
-            The Purple Heart Project introduces physically and mentally
-            combat-wounded veterans to the peace and joy that can be found
-            through traditional hand tool woodworking. From scholarships and
-            hand tools to the Bench Brigade and a lifelong community — we help
-            veterans find peace through craft and know they are never alone or
-            forgotten.
+            We introduce physically and mentally combat-wounded veterans, still
+            suffering from the negative effects of combat to the joy and peace
+            that can be found through the therapy of traditional hand tool
+            woodworking. We achieve this by providing combat-wounded veterans
+            with woodworking training, hand tools, workbenches, and a lifelong
+            community so they may find peace through craft and know they are
+            never alone or forgotten.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
             {journeyLinks.map((link) => (
@@ -173,39 +249,76 @@ export default function Home() {
       </section>
 
       <FeaturedQuote
+        title="In Their Words"
         quote={testimonials[0].quote}
         attribution={testimonials[0].attribution}
       />
 
-      {/* Make an Impact */}
-      <section className="bg-brand-light py-16 md:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-brand text-center mb-3">
-            Make an Impact
-          </h2>
-          <p className="text-brand-mid text-center max-w-xl mx-auto mb-10 text-sm">
-            By donating, applying, or spreading the word, you help veterans
-            find peace through woodworking.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {impactCards.map((card) => (
-              <div
-                key={card.title}
-                className="bg-white border border-neutral-200 rounded-md p-8 flex flex-col"
-              >
-                <h3 className="text-lg font-bold text-brand">{card.title}</h3>
-                <p className="mt-3 text-sm text-brand-mid leading-relaxed flex-1">
-                  {card.description}
-                </p>
-                <Link
-                  href={card.href}
-                  className="mt-6 inline-flex items-center gap-1 text-gold font-semibold text-sm hover:gap-2 transition-all"
-                >
-                  {card.cta} <ArrowRight size={14} />
-                </Link>
-              </div>
-            ))}
+      <section className="bg-brand-dark py-14 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-10 text-center">
+          <div>
+            <p className="text-5xl md:text-6xl font-bold text-white">260</p>
+            <p className="mt-3 text-white font-semibold">
+              Combat-wounded Veterans
+            </p>
+            <p className="mt-1 text-sm text-white/70">Served since 2016</p>
           </div>
+          <div>
+            <p className="text-5xl md:text-6xl font-bold text-white">42</p>
+            <p className="mt-3 text-white font-semibold">PHP Scholarships</p>
+            <p className="mt-1 text-sm text-white/70">Awarded Annually</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 md:py-20 border-b border-neutral-200">
+        <h2 className="px-4 text-center text-2xl md:text-3xl font-bold text-brand">
+          Who We Serve
+        </h2>
+        <div className="story-marquee relative mt-10">
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-28"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-28"
+            aria-hidden="true"
+          />
+          <ul
+            className="story-marquee-track items-stretch py-3"
+            aria-label="Before and after portraits of veterans served"
+          >
+            {marqueeStories.map((story, index) => {
+              const decorative = index >= storyLoop.length;
+              return (
+                <li
+                  key={`${story.id}-${index}`}
+                  className={`mx-3 w-72 shrink-0 ${
+                    decorative ? "story-marquee-duplicate" : ""
+                  }`}
+                  aria-hidden={decorative || undefined}
+                >
+                  <article className="h-full rounded-md border border-neutral-200 bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md">
+                    <div className="grid grid-cols-2 gap-3">
+                      <StoryPhoto label="Before" src={story.beforeSrc} />
+                      <StoryPhoto label="After" src={story.afterSrc} />
+                    </div>
+                    <p className="mt-4 text-center text-sm font-semibold text-brand">
+                      {story.name}
+                    </p>
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="mt-8 px-4 text-center">
+          <Link
+            href="/gallery#wall-of-heroes"
+            className="inline-flex text-gold font-semibold text-sm hover:underline underline-offset-4"
+          >
+            Click here to see our Wall of Heroes we have served
+          </Link>
         </div>
       </section>
 
@@ -214,12 +327,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-brand">
-              How We Help
+              Woodworking – Healing – Community
             </h2>
-            <p className="mt-3 text-brand-mid max-w-2xl mx-auto text-sm">
-              Working with hand tools is quiet woodworking — and for many
-              combat-wounded veterans, that quiet is exactly what they need.
-            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {highlights.map((item) => {
@@ -290,7 +399,7 @@ export default function Home() {
       <section className="bg-brand-dark py-14 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white">
-            Get Involved with PHP
+            How You Can Help – Get Involved
           </h2>
           <p className="mt-4 text-white/70 text-sm leading-relaxed">
             Whether you donate, volunteer with the Bench Brigade, or share our
@@ -314,7 +423,53 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-white py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand">
+            Trusted and Transparent Stewardship
+          </h2>
+          <p className="mt-6 text-brand-mid leading-relaxed">
+            We work hard to be worthy of your trust and are committed to
+            transparency and fiscal responsibility. We are proud to be Charity
+            Navigator 4-star charity, a platinum transparency rating by Candid,
+            and to report that 86% of every dollar donation in 2026 was applied
+            directly to support the combat-veterans we served.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+            <Link
+              href="/about#financials"
+              className="text-gold font-semibold text-sm hover:underline underline-offset-4"
+            >
+              See our financials
+            </Link>
+            <a
+              href="https://app.candid.org/profile/14533139/purple-heart-project-88-2217122"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold font-semibold text-sm hover:underline underline-offset-4"
+            >
+              Learn about our rating
+            </a>
+          </div>
+        </div>
+      </section>
+
       <Sponsors />
+
+      <section className="bg-brand-light py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand">
+            Stay in Contact with PHP
+          </h2>
+          <NewsletterSignup />
+          <Link
+            href="/contact"
+            className="mt-4 inline-flex rounded-md border border-brand px-6 py-3 text-sm font-semibold text-brand hover:bg-white transition-colors"
+          >
+            Contact Us
+          </Link>
+        </div>
+      </section>
     </>
   );
 }

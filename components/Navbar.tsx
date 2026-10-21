@@ -30,7 +30,7 @@ const navItems: NavItem[] = [
   },
   {
     href: "/programs",
-    label: "Scholarship",
+    label: "Our Program",
     children: [
       { href: "/programs#scholarship", label: "Scholarship Application" },
       {
