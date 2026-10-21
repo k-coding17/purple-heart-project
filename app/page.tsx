@@ -10,6 +10,7 @@ import {
   Flag,
   Landmark,
   User,
+  Megaphone,
 } from "lucide-react";
 import Sponsors from "@/components/Sponsors";
 import NewsletterSignup from "@/components/NewsletterSignup";
@@ -22,8 +23,40 @@ const testimonials = [
   },
   {
     quote:
-      "Woodworking and using hand tools has been a turning point for me facing daily battles of recovery from combat. You suddenly find yourself in a really disruptive life that you're not used to visiting. Things are different. Life is different.",
-    attribution: "Army Vet Mark from Idaho — PHP Scholarship Recipient",
+      "You suddenly find yourself in a really disruptive life that you're not used to visiting. Things are different. Life is different. Woodworking and using hand tools has been a turning point for me facing daily battles of recovery from combat.",
+    attribution: "Mark, Army Veteran, Idaho",
+  },
+  {
+    quote:
+      "PTSD and TBI aren't visible. A lot of people think maybe some are faking it because you can't see physical scars or missing limbs, but that is so far from the truth. Everything we've done this week with learning woodworking has contributed to not only helping me regain some of the peace I have been missing in my life, but it has given me a sense of being valuable and able to do something.",
+    attribution: "Bill, Army Veteran, Nebraska",
+  },
+];
+
+const helpWays = [
+  {
+    icon: Heart,
+    title: "Give",
+    description:
+      "Fund a veteran's week in the shop, a premium hand-tool kit, or the lumber for a bench. Every dollar goes to the program.",
+    href: "/donate",
+    cta: "Ways to give",
+  },
+  {
+    icon: Hammer,
+    title: "Volunteer & the Bench Brigade",
+    description:
+      "Past students return to assist in class. Bench Brigade volunteers build and hand-deliver a workbench to each graduate's home.",
+    href: "/bench-brigade",
+    cta: "Get involved",
+  },
+  {
+    icon: Megaphone,
+    title: "Spread the word",
+    description:
+      "Tell a veteran who needs this. Bring the PHP to your civic club, VFW, or American Legion post with ready-made materials.",
+    href: "/about#flyers",
+    cta: "Downloadable materials",
   },
 ];
 
@@ -136,38 +169,6 @@ function StoryPhoto({
   );
 }
 
-function FeaturedQuote({
-  quote,
-  attribution,
-  title,
-}: {
-  quote: string;
-  attribution: string;
-  title?: string;
-}) {
-  return (
-    <section className="bg-white py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-y border-neutral-200">
-      <div className="mx-auto max-w-3xl text-center">
-        {title && (
-          <h2 className="text-2xl md:text-3xl font-bold text-brand mb-8">
-            {title}
-          </h2>
-        )}
-        <Quote
-          className="text-gold w-8 h-8 mx-auto mb-6 opacity-40"
-          strokeWidth={1.5}
-        />
-        <blockquote className="text-xl md:text-2xl text-brand leading-relaxed font-medium italic">
-          &ldquo;{quote}&rdquo;
-        </blockquote>
-        <footer className="mt-6 text-brand-mid text-sm font-semibold uppercase tracking-wide">
-          {attribution}
-        </footer>
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
   return (
     <>
@@ -248,11 +249,32 @@ export default function Home() {
         </div>
       </section>
 
-      <FeaturedQuote
-        title="In Their Words"
-        quote={testimonials[0].quote}
-        attribution={testimonials[0].attribution}
-      />
+      <section className="bg-white py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-y border-neutral-200">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-center text-2xl md:text-3xl font-bold text-brand">
+            In Their Words
+          </h2>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((item) => (
+              <article
+                key={item.attribution}
+                className="flex flex-col rounded-md border border-neutral-200 bg-brand-light p-6"
+              >
+                <Quote
+                  className="text-gold mb-4 h-7 w-7 opacity-50"
+                  strokeWidth={1.5}
+                />
+                <blockquote className="flex-1 text-sm leading-relaxed text-brand">
+                  {item.quote}
+                </blockquote>
+                <footer className="mt-6 border-t border-neutral-300 pt-4 text-sm font-semibold text-gold">
+                  {item.attribution}
+                </footer>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="bg-brand-dark py-14 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-10 text-center">
@@ -327,7 +349,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-brand">
-              Woodworking – Healing – Community
+              What Veterans Find Here
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -390,35 +412,35 @@ export default function Home() {
         </div>
       </section>
 
-      <FeaturedQuote
-        quote={testimonials[1].quote}
-        attribution={testimonials[1].attribution}
-      />
-
-      {/* Get Involved */}
-      <section className="bg-brand-dark py-14 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">
+      <section className="bg-brand-light py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-center text-2xl md:text-3xl font-bold text-brand">
             How You Can Help – Get Involved
           </h2>
-          <p className="mt-4 text-white/70 text-sm leading-relaxed">
-            Whether you donate, volunteer with the Bench Brigade, or share our
-            mission — every action helps a combat-wounded veteran find peace
-            through woodworking.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link
-              href="/donate"
-              className="rounded-md bg-gold px-6 py-3 text-white font-semibold hover:bg-gold-dark transition-colors text-sm"
-            >
-              Donate Now
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-md border border-white/40 px-6 py-3 text-white font-semibold hover:bg-white/10 transition-colors text-sm"
-            >
-              Contact Us
-            </Link>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {helpWays.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article
+                  key={item.title}
+                  className="flex flex-col rounded-md border border-neutral-200 bg-white p-8"
+                >
+                  <span className="mb-5 flex h-10 w-10 items-center justify-center rounded-md bg-gold-light">
+                    <Icon className="h-5 w-5 text-gold" strokeWidth={1.5} />
+                  </span>
+                  <h3 className="text-lg font-bold text-brand">{item.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-mid">
+                    {item.description}
+                  </p>
+                  <Link
+                    href={item.href}
+                    className="mt-6 inline-flex items-center gap-1 text-sm font-semibold uppercase tracking-wide text-gold hover:gap-2 transition-all"
+                  >
+                    {item.cta} <ArrowRight size={14} />
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
