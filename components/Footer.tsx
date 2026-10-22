@@ -11,7 +11,7 @@ const footerLinks = {
     { href: "/news", label: "News & Media" },
     { href: "/contact", label: "Contact Us" },
   ],
-  Scholarship: [
+  "Our Program": [
     { href: "/programs#scholarship", label: "Scholarship Application" },
     { href: "/programs#blue-chip", label: "Blue Chip Recommendation" },
     { href: "/bench-brigade", label: "Volunteer" },
@@ -39,9 +39,8 @@ export default function Footer() {
           <div className="space-y-4">
             <Logo alwaysShowText imageClassName="h-9 w-auto" />
             <p className="text-sm leading-relaxed">
-              Introducing combat-wounded veterans to the peace and joy found
-              through the therapy of traditional hand tool woodworking — since
-              2016.
+              Empowering combat-wounded veterans through woodworking and
+              community — since 2016.
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
@@ -100,7 +99,7 @@ export default function Footer() {
                       </span>
                       <div className="absolute bottom-0 right-0 flex items-end gap-4">
                         <a
-                          href="https://www.candid.org"
+                          href="https://app.candid.org/profile/14533139/purple-heart-project-88-2217122"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="shrink-0 transition-opacity hover:opacity-80"
@@ -114,13 +113,21 @@ export default function Footer() {
                             className="h-32 w-auto max-w-none"
                           />
                         </a>
-                        <Image
-                          src="/four-star-rating-2026.png"
-                          alt="Four-Star Rating Badge 2026"
-                          width={1801}
-                          height={1801}
-                          className="h-32 w-auto max-w-none shrink-0"
-                        />
+                        <a
+                          href="https://www.charitynavigator.org/ein/882217122"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 transition-opacity hover:opacity-80"
+                          aria-label="View Purple Heart Project on Charity Navigator (opens in new tab)"
+                        >
+                          <Image
+                            src="/four-star-rating-2026.png"
+                            alt="Charity Navigator Four-Star Rating"
+                            width={1801}
+                            height={1801}
+                            className="h-32 w-auto max-w-none shrink-0"
+                          />
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -135,7 +142,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Purple Heart Project. All rights
             reserved.
           </p>
-          <p>501(c)(3) Nonprofit Organization</p>
+          <p>US 501(c)3 Non-Profit Organization</p>
           <div className="flex gap-4">
             <Link
               href="/privacy"

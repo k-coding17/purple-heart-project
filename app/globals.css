@@ -54,6 +54,31 @@ body {
   animation-play-state: paused;
 }
 
+/* Veteran stories — slow drift, same loop as the sponsor row */
+@keyframes story-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.story-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: story-marquee 56s linear infinite;
+  will-change: transform;
+}
+
+.story-marquee {
+  overflow: hidden;
+}
+
+.story-marquee-track:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sponsor-marquee-track {
     animation: none;
@@ -71,6 +96,25 @@ body {
   }
 
   .sponsor-marquee-track > * {
+    scroll-snap-align: center;
+  }
+
+  .story-marquee {
+    overflow-x: auto;
+  }
+
+  .story-marquee-track {
+    animation: none;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .story-marquee-track > .story-marquee-duplicate {
+    display: none;
+  }
+
+  .story-marquee-track > * {
     scroll-snap-align: center;
   }
 }
