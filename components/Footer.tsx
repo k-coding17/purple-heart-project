@@ -113,13 +113,21 @@ export default function Footer() {
                             className="h-32 w-auto max-w-none"
                           />
                         </a>
-                        <Image
-                          src="/four-star-rating-2026.png"
-                          alt="Four-Star Rating Badge 2026"
-                          width={1801}
-                          height={1801}
-                          className="h-32 w-auto max-w-none shrink-0"
-                        />
+                        <a
+                          href="https://www.charitynavigator.org/ein/882217122"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 transition-opacity hover:opacity-80"
+                          aria-label="View Purple Heart Project on Charity Navigator (opens in new tab)"
+                        >
+                          <Image
+                            src="/four-star-rating-2026.png"
+                            alt="Charity Navigator Four-Star Rating"
+                            width={1801}
+                            height={1801}
+                            className="h-32 w-auto max-w-none shrink-0"
+                          />
+                        </a>
                       </div>
                     </div>
                   </div>

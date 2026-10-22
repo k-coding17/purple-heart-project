@@ -283,7 +283,7 @@ export default function Home() {
             <p className="mt-3 text-white font-semibold">
               Combat-wounded Veterans
             </p>
-            <p className="mt-1 text-sm text-white/70">Served since 2016</p>
+            <p className="mt-1 text-sm text-white/70">Served since 2026</p>
           </div>
           <div>
             <p className="text-5xl md:text-6xl font-bold text-white">42</p>
@@ -454,7 +454,7 @@ export default function Home() {
             We work hard to be worthy of your trust and are committed to
             transparency and fiscal responsibility. We are proud to be Charity
             Navigator 4-star charity, a platinum transparency rating by Candid,
-            and to report that 86% of every dollar donation in 2026 was applied
+            and to report that 86% of every dollar donation in 2025 was applied
             directly to support the combat-veterans we served.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
@@ -465,12 +465,20 @@ export default function Home() {
               See our financials
             </Link>
             <a
+              href="https://www.charitynavigator.org/ein/882217122"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold font-semibold text-sm hover:underline underline-offset-4"
+            >
+              Learn about our Charity Navigator rating
+            </a>
+            <a
               href="https://app.candid.org/profile/14533139/purple-heart-project-88-2217122"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gold font-semibold text-sm hover:underline underline-offset-4"
             >
-              Learn about our rating
+              Learn about our Candid rating
             </a>
           </div>
         </div>
